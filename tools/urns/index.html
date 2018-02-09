@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>F2PRS / Tools / Urns</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.3/css/bulma.min.css">
+
+    <link rel="stylesheet" type="text/css" href="../css/tools.css">
+    <link rel="shortcut icon" href="../../assets/images/favicon.png">
+  </head>
+
+  <body>
+
+    <section class="hero">
+
+      <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <div class="navbar-item">
+            <a href="../" class="is-danger"><i class="fa fa-chevron-left" style="color: #000;"></i></a>
+          </div>
+        </div>
+      </nav>
+
+      <div class="hero-body">
+        <div class="container">
+          <div class="columns">
+            <div class="column is-6 is-offset-3">
+
+              <h1 class="title">Urns</h1>
+              <hr />
+
+              <div class="box">
+                <h2 class="subtitle">Cooking</h2>
+
+                <div class="field is-grouped">
+                  <p class="control is-expanded">
+                    <input class="input is-danger" type="number" placeholder="Current XP">
+                  </p>
+                  <p class="control is-expanded">
+                    <input class="input is-danger" type="number" placeholder="Goal XP">
+                  </p>
+                  <input type="hidden" value="5700">
+                  <p class="control">
+                    <!-- <a class="button is-danger" onclick="urns(this);">
+                      Submit
+                    </a> -->
+                    <input class="button is-danger" type="submit" onclick="urns(this);">
+                  </p>
+                </div>
+
+                <div class="field has-addons">
+                  <p class="control is-expanded">
+                    <input class="input" type="text" readonly>
+                  </p>
+                  <p class="control">
+                    <a class="button is-static">
+                      Cooking Urns
+                    </a>
+                  </p>
+                </div>
+              </div>
+
+              <div class="box">
+                <h2 class="subtitle">Fishing</h2>
+
+                <div class="field is-grouped">
+                  <p class="control is-expanded">
+                    <input class="input is-info" type="number" placeholder="Current XP">
+                  </p>
+                  <p class="control is-expanded">
+                    <input class="input is-info" type="number" placeholder="Goal XP">
+                  </p>
+                  <input type="hidden" value="3000">
+                  <p class="control">
+                    <a class="button is-info" onclick="urns(this);">
+                      Submit
+                    </a>
+                  </p>
+                </div>
+
+                <div class="field has-addons">
+                  <p class="control is-expanded">
+                    <input class="input" type="text" readonly>
+                  </p>
+                  <p class="control">
+                    <a class="button is-static">
+                      Fishing Urns
+                    </a>
+                  </p>
+                </div>
+              </div>
+
+              <div class="box">
+                <h2 class="subtitle">Mining</h2>
+
+                <div class="field is-grouped">
+                  <p class="control is-expanded">
+                    <input class="input is-dark" type="number" placeholder="Current XP">
+                  </p>
+                  <p class="control is-expanded">
+                    <input class="input is-dark" type="number" placeholder="Goal XP">
+                  </p>
+                  <input type="hidden" value="1950">
+                  <p class="control">
+                    <a class="button is-dark" onclick="urns(this);">
+                      Submit
+                    </a>
+                  </p>
+                </div>
+
+                <div class="field has-addons">
+                  <p class="control is-expanded">
+                    <input class="input" type="text" readonly>
+                  </p>
+                  <p class="control">
+                    <a class="button is-static">
+                      Mining Urns
+                    </a>
+                  </p>
+                </div>
+              </div>
+
+              <div class="box">
+                <h2 class="subtitle">Prayer</h2>
+
+                <div class="field is-grouped">
+                  <p class="control is-expanded">
+                    <input class="input is-light" type="number" placeholder="Current XP">
+                  </p>
+                  <p class="control is-expanded">
+                    <input class="input is-light" type="number" placeholder="Goal XP">
+                  </p>
+                  <input type="hidden" value="687.5">
+                  <p class="control">
+                    <a class="button is-light" onclick="urns(this);">
+                      Submit
+                    </a>
+                  </p>
+                </div>
+
+                <div class="field has-addons">
+                  <p class="control is-expanded">
+                    <input class="input" type="text" readonly>
+                  </p>
+                  <p class="control">
+                    <a class="button is-static">
+                      Prayer Urns
+                    </a>
+                  </p>
+                </div>
+              </div>
+
+              <div class="box">
+                <h2 class="subtitle">Runecrafting</h2>
+
+                <div class="field is-grouped">
+                  <p class="control is-expanded">
+                    <input class="input is-warning" type="number" placeholder="Current XP">
+                  </p>
+                  <p class="control is-expanded">
+                    <input class="input is-warning" type="number" placeholder="Goal XP">
+                  </p>
+                  <input type="hidden" value="4200">
+                  <p class="control">
+                    <a class="button is-warning" onclick="urns(this);">
+                      Submit
+                    </a>
+                  </p>
+                </div>
+
+                <div class="field has-addons">
+                  <p class="control is-expanded">
+                    <input class="input" type="text" readonly>
+                  </p>
+                  <p class="control">
+                    <a class="button is-static">
+                      Runecrafting Urns
+                    </a>
+                  </p>
+                </div>
+              </div>
+
+              <div class="box">
+                <h2 class="subtitle">Smithing</h2>
+
+                <div class="field is-grouped">
+                  <p class="control is-expanded">
+                    <input class="input is-dark" type="number" placeholder="Current XP">
+                  </p>
+                  <p class="control is-expanded">
+                    <input class="input is-dark" type="number" placeholder="Goal XP">
+                  </p>
+                  <input type="hidden" value="900">
+                  <p class="control">
+                    <a class="button is-dark" onclick="urns(this);">
+                      Submit
+                    </a>
+                  </p>
+                </div>
+
+                <div class="field has-addons">
+                  <p class="control is-expanded">
+                    <input class="input" type="text" readonly>
+                  </p>
+                  <p class="control">
+                    <a class="button is-static">
+                      Smithing Urns
+                    </a>
+                  </p>
+                </div>
+              </div>
+
+              <div class="box">
+                <h2 class="subtitle">Woodcutting</h2>
+
+                <div class="field is-grouped">
+                  <p class="control is-expanded">
+                    <input class="input is-primary" type="number" placeholder="Current XP">
+                  </p>
+                  <p class="control is-expanded">
+                    <input class="input is-primary" type="number" placeholder="Goal XP">
+                  </p>
+                  <input type="hidden" value="4950">
+                  <p class="control">
+                    <a class="button is-primary" onclick="urns(this);">
+                      Submit
+                    </a>
+                  </p>
+                </div>
+
+                <div class="field has-addons">
+                  <p class="control is-expanded">
+                    <input class="input" type="text" readonly>
+                  </p>
+                  <p class="control">
+                    <a class="button is-static">
+                      Woodcutting Urns
+                    </a>
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <script>
+
+      function urns(obj) {
+        var start;
+        var end;
+        var urn_xp;
+        var result;
+
+        var form = obj.parentElement.parentElement;
+
+        start = form.children[0].children[0].value;
+        end = form.children[1].children[0].value;
+        urn_xp = form.children[2].value;
+
+        result = (Number(end) - Number(start)) / Number(urn_xp);
+
+        form.nextElementSibling.children[0].children[0].value = Math.round(result);
+      }
+
+    </script>
+
+  </body>
+</html>
