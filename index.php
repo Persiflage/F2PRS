@@ -13,19 +13,24 @@
 
 
 		<p style="width: 480px; margin: 30px auto; line-height: 24px;">
-			<span style="color: #53E053">Oct 9</span>/ <a href="hiscores.php?skill=fletching" style="color: #53E053">Fletching</a> is here!</p>
-		<br/>
+			<span style="color: #53E053">Feb 12</span>/ <a class="gain" href="tools/rates/">EHP rates</a> have been updated.</p>
+
+		<p style="width: 480px; margin: 30px auto; line-height: 24px;">
+			<span style="color: #53E053">Recent</span>/ Various tools are available <a class="gain" href="tools/">here</a>.</p>
+
+		<br>
 
 
 		<h3>Changelog</h3>
-		<div style="text-align: left; width: 480px; margin: auto;">
-			<code>8/30 | Disabled theme toggle until I fix it</code> <br />
-			<code>8/30 | Updated Runecrafting EHP to 92.5k xp/h</code> <br/>
-			<code>7/15 | EHP hiscores now show to 2 decimal points</code><br/>
-			<code>7/08 | Public EHP rates are now <a href="tools/rates/">available here</a></code><br/>
-			<code>7/07 | EHP now shows to 2 decimal points on track pages</code><br/>
-			<code>7/07 | F2PRS is now using a new EHP algorithm</code><br/>
-			<code>7/02 | See a full breakdown of your <a href="tools/ehp/">account EHP here</a></code><br/>
+		<div style="width: 480px; margin: auto;">
+			<p>
+				Prayer rate changed to 610k<br>
+				Crafting rate reverted to 630k<br>
+				Firemaking is now lossless from 11.7m xp onwards<br>
+				Dungeoneering rate changed to 290k
+			</p>
+
+			<p>Please see <a href="https://www.youtube.com/watch?v=tJ-OC16PBBM" class="gain">this video</a> for an example of how Prayer should be efficiently trained.</p>
 		</div>
 
 		<br/><br/>
