@@ -2,7 +2,7 @@
 
 	function curl($player) {
 		$player = str_replace(" ", "_", $player);
-		$url = "http://services.runescape.com/m=hiscore/index_lite.ws?player=$player";
+		$url = "https://services.runescape.com/m=hiscore/index_lite.ws?player=$player";
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $url);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -10,7 +10,7 @@
 		$cURL = curl_exec($ch);
 		$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 		if ($httpCode == 404) {
-			  return null;
+				return null;
 		} else {
 			return $cURL;
 		}
@@ -50,7 +50,7 @@
 
 	function get_stats($player) {
 
-  		$order = array("total", "attack", "defence", "strength", "constitution", "ranged", "prayer", "magic", "cooking", "woodcutting", "fletching", "fishing", "firemaking", "crafting", "smithing", "mining", "herblore", "agility", "thieving", "slayer", "farming", "runecrafting", "hunter", "construction", "summoning", "dungeoneering", "divination", "invention");
+		$order = array("total", "attack", "defence", "strength", "constitution", "ranged", "prayer", "magic", "cooking", "woodcutting", "fletching", "fishing", "firemaking", "crafting", "smithing", "mining", "herblore", "agility", "thieving", "slayer", "farming", "runecrafting", "hunter", "construction", "summoning", "dungeoneering", "divination", "invention");
 		$stats = array();
 
 		$raw = curl($player);

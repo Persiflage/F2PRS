@@ -105,7 +105,7 @@ Class rs_api {
     }
 
     public function get_player_details($player_name, $logged_in = false){
-        $url = 'http://services.runescape.com/m=website-data/playerDetails.ws?membership=true&names=["'.$this->normalize_name($player_name).'"]&callback=angular.callbacks._0';
+        $url = 'https://services.runescape.com/m=website-data/playerDetails.ws?membership=true&names=["'.$this->normalize_name($player_name).'"]&callback=angular.callbacks._0';
         $result = $this->get_url($url, $logged_in);
         $result = $this->trim_rm_callback($result)[0];
         return $result;
@@ -122,15 +122,15 @@ Class rs_api {
     }
 
     public function get_player_avatar($player_name){
-        $url = 'http://services.runescape.com/m=avatar-rs/'.$this->normalize_name($player_name).'/chat.png';
+        $url = 'https://services.runescape.com/m=avatar-rs/'.$this->normalize_name($player_name).'/chat.png';
         return $url;
     }
 
     public function get_player_outfit($player_name){
-        $url = 'http://services.runescape.com/m=avatar-rs/'.$this->normalize_name($player_name).'/appearance.dat';
+        $url = 'https://services.runescape.com/m=avatar-rs/'.$this->normalize_name($player_name).'/appearance.dat';
         $appearance_string = $this->get_url($url);
         if($appearance_string != false){
-            $details_url = 'http://services.runescape.com/m=adventurers-log/avatardetails.json?details='.$appearance_string;
+            $details_url = 'https://services.runescape.com/m=adventurers-log/avatardetails.json?details='.$appearance_string;
             $result = $this->get_url($details_url);
             return json_decode($result);
         }else{
@@ -151,14 +151,14 @@ Class rs_api {
 
         if(isset($type) && $type != false){
             if($type == 'IM'){
-                $url = 'http://services.runescape.com/m=hiscore_ironman/index_lite.ws?player='.$this->normalize_name($player_name);
+                $url = 'https://services.runescape.com/m=hiscore_ironman/index_lite.ws?player='.$this->normalize_name($player_name);
             }elseif($type == 'HCIM'){
-                $url = 'http://services.runescape.com/m=hiscore_hardcore_ironman/index_lite.ws?player='.$this->normalize_name($player_name);
+                $url = 'https://services.runescape.com/m=hiscore_hardcore_ironman/index_lite.ws?player='.$this->normalize_name($player_name);
             }else{
                 return 'INVALID TYPE';
             }
         }else{
-            $url = 'http://services.runescape.com/m=hiscore/index_lite.ws?player='.$this->normalize_name($player_name);
+            $url = 'https://services.runescape.com/m=hiscore/index_lite.ws?player='.$this->normalize_name($player_name);
         }
 
         $result = $this->get_url($url);
@@ -200,7 +200,7 @@ Class rs_api {
      * @return array
      */
     public function get_clan_list($clan_name){
-        $url = 'http://services.runescape.com/m=clan-hiscores/members_lite.ws?clanName='.$this->normalize_clan_name($clan_name);
+        $url = 'https://services.runescape.com/m=clan-hiscores/members_lite.ws?clanName='.$this->normalize_clan_name($clan_name);
         $result = $this->get_url($url);
         if($result != false){
             $clan_list = array();
@@ -229,7 +229,7 @@ Class rs_api {
      * @return array
      */
     public function get_clan_list_light($clan_name){
-        $url = 'http://services.runescape.com/m=clan-hiscores/members_lite.ws?clanName='.$this->normalize_clan_name($clan_name);
+        $url = 'https://services.runescape.com/m=clan-hiscores/members_lite.ws?clanName='.$this->normalize_clan_name($clan_name);
         $result = $this->get_url($url);
         if($result != false){
             $clan_list = array();
@@ -257,7 +257,7 @@ Class rs_api {
      * @return array
      */
     public function get_item_info($item_id){
-        $url = 'http://services.runescape.com/m=itemdb_rs/api/catalogue/detail.json?item='.$item_id;
+        $url = 'https://services.runescape.com/m=itemdb_rs/api/catalogue/detail.json?item='.$item_id;
         $result = json_decode($this->get_url($url));
         if($result != false){
             return $result->item;
@@ -283,7 +283,7 @@ Class rs_api {
         $req_count = count($item_list);
         for($i=0;$i<=$req_count-1;$i++){
             $item_id = $item_list[$i];
-            $url = 'http://services.runescape.com/m=itemdb_rs/api/catalogue/detail.json?item='.$item_id;
+            $url = 'https://services.runescape.com/m=itemdb_rs/api/catalogue/detail.json?item='.$item_id;
             $post_data = NULL;
             $user_data = [$item_id, $i, $req_count];
             $options = [CURLOPT_SSL_VERIFYPEER => FALSE, CURLOPT_SSL_VERIFYHOST => FALSE];
@@ -452,14 +452,14 @@ Class rs_api {
                 $chunked = array_chunk($name_list, 99, false);
                 foreach($chunked as $sub_array){
                     $list = json_encode($sub_array);
-                    $playerdetails_url = 'http://services.runescape.com/m=website-data/playerDetails.ws?membership=true&names='.$list.'&callback=angular.callbacks._0';
+                    $playerdetails_url = 'https://services.runescape.com/m=website-data/playerDetails.ws?membership=true&names='.$list.'&callback=angular.callbacks._0';
                     $result = $this->get_url($playerdetails_url, $logged_in);
                     $result = $this->trim_rm_callback($result);
                     $comb_array = array_merge($comb_array, (array)$result);
                 }
             }else{
                 $list = json_encode($name_list);
-                $playerdetails_url = 'http://services.runescape.com/m=website-data/playerDetails.ws?membership=true&names='.$list.'&callback=angular.callbacks._0';
+                $playerdetails_url = 'https://services.runescape.com/m=website-data/playerDetails.ws?membership=true&names='.$list.'&callback=angular.callbacks._0';
                 $result = $this->get_url($playerdetails_url, $logged_in);
                 $result = $this->trim_rm_callback($result);
                 $comb_array = $result;
@@ -523,7 +523,7 @@ Class rs_api {
      * @return string - new token, token still valid or check failed
      */
     private function probe_token(){
-        curl_setopt($this->curl, CURLOPT_URL, 'http://services.runescape.com/m=website-data/playerDetails.ws?membership=true&names=["'.$this->_pugName.'"]&callback=angular.callbacks._0');
+        curl_setopt($this->curl, CURLOPT_URL, 'https://services.runescape.com/m=website-data/playerDetails.ws?membership=true&names=["'.$this->_pugName.'"]&callback=angular.callbacks._0');
         curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($this->curl, CURLOPT_REFERER, "https://apps.runescape.com/runemetrics/app/");
         curl_setopt($this->curl, CURLOPT_HTTPHEADER, array("Cookie: loggedIn=true; session=".$this->_sessionToken.";"));

@@ -4,7 +4,7 @@
 		$i = 0;
 		foreach ($data as $value) {
 			$tmp_value = str_replace(" ", "_", $value);
-			$data[$i] = 'http://services.runescape.com/m=hiscore/index_lite.ws?player='.$tmp_value;
+			$data[$i] = 'https://services.runescape.com/m=hiscore/index_lite.ws?player='.$tmp_value;
 			$i++;
 		}
 
