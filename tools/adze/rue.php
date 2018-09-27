@@ -151,14 +151,14 @@ Class rs_api {
 
         if(isset($type) && $type != false){
             if($type == 'IM'){
-                $url = 'http://services.runescape.com/m=hiscore_ironman/index_lite.ws?player='.$this->normalize_name($player_name);
+                $url = 'https://services.runescape.com/m=hiscore_ironman/index_lite.ws?player='.$this->normalize_name($player_name);
             }elseif($type == 'HCIM'){
-                $url = 'http://services.runescape.com/m=hiscore_hardcore_ironman/index_lite.ws?player='.$this->normalize_name($player_name);
+                $url = 'https://services.runescape.com/m=hiscore_hardcore_ironman/index_lite.ws?player='.$this->normalize_name($player_name);
             }else{
                 return 'INVALID TYPE';
             }
         }else{
-            $url = 'http://services.runescape.com/m=hiscore/index_lite.ws?player='.$this->normalize_name($player_name);
+            $url = 'https://services.runescape.com/m=hiscore/index_lite.ws?player='.$this->normalize_name($player_name);
         }
 
         $result = $this->get_url($url);
