@@ -31,6 +31,8 @@
 
               <p class="content">This page shows the EHP rates used by F2PRS to calculate EHP and Skiller EHP. The format is <code>threshold:rate</code> where <code>rate</code> is the xp/h used at a skill experience of <code>threshold</code>. An extremely high rate value (ex: <code>166,636:199,833,365</code> for Magic) indicates the skill is 0 time from that point onwards, and is given a 1 hour buffer to achieve 200m.</p>
 
+              <p class="content">Skilling outfits (like the Shark and Ethereal outfits), repeatable activites (like Daily Challenges and the Giant Oyster), and Bonus Experience Weekends are not included in any rates.</p>
+
               <?php
 
                 require_once '../../assets/includes/php/rates.php';
