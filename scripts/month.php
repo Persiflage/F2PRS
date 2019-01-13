@@ -28,7 +28,7 @@
 
 	/* Add them to a names array */
 	while($data = $users->fetch_array(MYSQLI_ASSOC)) {
-	   $names[$i] = $data[rsn];
+	   $names[$i] = $data['rsn'];
 	   $i++;
 	}
 
