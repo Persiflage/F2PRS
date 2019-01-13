@@ -66,11 +66,6 @@
 			/* Gets stats and virtual levels */
 			$stats = get_stats($player);
 
-			// if($stats == null)
-				// curl returned null -- player doesn't exist on RSHS
-			// if(is_p2p($stats))
-				// stats are of a P2P player -- remove from database
-
 			$stats["ehp"]["xp"] = ehp($stats, $rates, 0);
 			$stats["sk_ehp"]["xp"] = ehp($stats, $sk_rates, 0);
 

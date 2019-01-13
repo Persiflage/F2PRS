@@ -15,7 +15,6 @@
 	require_once '../assets/includes/php/ehp.php';
 	require_once '../assets/includes/php/functions.php';
 
-
 	/* Connect to database */
 	$link = database_connect();
 
@@ -51,7 +50,7 @@
 			   delete_user($multiArray[$j], $link);
 		   } else {
 			   if($curlReturn[$j] != "") {
-				   echo "User: ".$multiArray[$j]."<br/>";
+				   echo "User: ".$multiArray[$j]."<br/>\n";
 				   parse_function($multiArray[$j], $curlReturn[$j]);
 			   }
 		   }
@@ -65,10 +64,6 @@
 
 
 ?>
-
-
-
-
 
 
 <?php
@@ -89,11 +84,15 @@
 		/* Gets stats and virtual levels */
 		$stats = parse_raw_stats($player, $raw);
 
-		// if($stats == null)
-			// curl returned null -- player doesn't exist on RSHS
-		// if(is_p2p($stats))
-			// stats are of a P2P player -- remove from database
+		if($stats == null) {
+			echo "Stats for player " . $player . " are null.\n";
+			delete_user($player);
+		}
 
+		if (is_p2p($stats)) {
+			echo "Stats for player " . $player . " indicate MEMBERSHIP.\n";
+			delete_user($player);
+		}
 
 		$stats["ehp"]["xp"] = ehp($stats, $rates, 0);
 		$stats["sk_ehp"]["xp"] = ehp($stats, $sk_rates, 0);
@@ -114,7 +113,7 @@
 
 	function delete_user($player) {
 		global $link;
-		echo "Deleting $player.<br/>";
+		echo "Deleting $player.<br/>\n";
 		$link->query("DELETE FROM hs WHERE rsn='$player'");
 		$link->query("DELETE FROM week WHERE rsn='$player'");
 		$link->query("DELETE FROM month WHERE rsn='$player'");
