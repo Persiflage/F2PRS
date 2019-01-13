@@ -360,7 +360,7 @@ a:hover {
     position: relative;
 	float: left;
 	padding: 0em 0 .5em;
-    width: 25%;
+    width: 20%;
     font-size: 24px;
 	text-decoration: none;
 	color: #666;
@@ -376,7 +376,7 @@ a:hover {
 
 .effect {
 	position: absolute;
-	left: -14%;
+	left: -10%;
 	-webkit-transition: 0.7s ease-in-out;
 	-moz-transition: 0.7s ease-in-out;
 	-o-transition: 0.7s ease-in-out;
@@ -384,20 +384,15 @@ a:hover {
 	transition: 0.7s ease-in-out;
 }
 
-.nav a:nth-child(1):hover ~ .effect {
-	left: 10%; }
-.nav a:nth-child(2):hover ~ .effect {
-	left: 35%; }
-.nav a:nth-child(3):hover ~ .effect {
-	left: 60%; }
-.nav a:nth-child(4):hover ~ .effect {
-	left: 87%; }
-.nav a:nth-child(5):hover ~ .effect {
-	left: 90%; }
+.nav a:nth-child(1):hover ~ .effect { left: 10%;}
+.nav a:nth-child(2):hover ~ .effect { left: 30%; }
+.nav a:nth-child(3):hover ~ .effect { left: 50%; }
+.nav a:nth-child(4):hover ~ .effect { left: 70%; }
+.nav a:nth-child(5):hover ~ .effect { left: 90%; }
 
 
 .navigation .effect {
-	width: 100px;
+	width: 80px;
 	height: 2px;
 	bottom: 0px;
 	background: #e6e6e6;
