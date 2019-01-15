@@ -66,13 +66,13 @@
                 </ul>
 
 
-                <h2 class="subtitle">Old School RuneScape</h2>
+                <!-- <h2 class="subtitle">Old School RuneScape</h2>
 
                 <ul>
                   <li>Account Type (Normal, Ironman, Ultimate Ironman)</li>
                   <li>Main Game, Deadman Mode, and Seasonal Deadman Mode Stats</li>
                   <li>Previous Name (CML)</li>
-                </ul>
+                </ul> -->
 
                 <?php
 

@@ -176,11 +176,15 @@ Class rs_api {
                             'experience' => $row_items[2]
                         );
                     }else{
+                      if ($key > count($this->skill_list)) {
+                        continue;
+                      } else {
                         $list[] = (object)array(
                             'name' => $this->skill_list[$key],
                             'rank' => $row_items[0],
                             'value' => $row_items[1]
                         );
+                      }
                     }
                 }
             }
