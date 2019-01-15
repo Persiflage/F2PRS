@@ -176,7 +176,7 @@ Class rs_api {
                             'experience' => $row_items[2]
                         );
                     }else{
-                      if ($key > count($this->skill_list)) {
+                      if ($key > count($this->skill_list)-1) {
                         continue;
                       } else {
                         $list[] = (object)array(
