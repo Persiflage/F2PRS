@@ -41,7 +41,7 @@ require_once '../../assets/includes/php/db.php';
 /* Connect to database */
 $link = database_connect();
 
-$count = $link->query("SElECT COUNT(*) AS count FROM hs");
+$count = $link->query("SELECT COUNT(*) AS count FROM hs");
 $count = $count->fetch_array(MYSQLI_ASSOC);
 $count = $count['count'];
 

@@ -191,6 +191,4 @@ $sk_rates = [
     "invention" => null
 ];
 
-
-
 ?>
