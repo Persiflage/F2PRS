@@ -97,6 +97,12 @@
                     }
 
                     function print_stats($stats_rue) {
+                      if ($stats_rue === "NO PROFILE") {
+                        echo('<div class="card">
+                          <div class="card-content">User does not appear on the hiscores.</div></div>');
+                        return;
+                      }
+
                       $order = array("Attack", "Constitution", "Mining", "Strength", "Agility", "Smithing", "Defence", "Herblore", "Fishing", "Ranged", "Thieving", "Cooking", "Prayer", "Crafting", "Firemaking", "Magic", "Fletching", "Woodcutting", "Runecrafting", "Slayer", "Farming", "Construction", "Hunter", "Summoning", "Dungeoneering", "Divination", "Invention");
                       $stats = array();
 
