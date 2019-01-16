@@ -3,9 +3,9 @@
   "version": "v3.0.0-alpha",
   "license": "MIT",
   "scripts": {
-    "dev": "next www",
-    "start": "next start www",
-    "build": "next build www",
+    "dev": "next",
+    "start": "next start",
+    "build": "next build",
     "export": "next export",
     "lint": "eslint --ignore-path .gitignore ."
   },

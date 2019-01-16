@@ -1,0 +1,9 @@
+{
+  "license": "MIT",
+  "scripts": {
+    "dev:api": "cd api && yarn dev",
+    "dev:front": "cd www && yarn dev",
+    "start:api": "cd api && yarn start",
+    "start:front": "cd www && yarn start"
+  }
+}
