@@ -1,5 +1,3 @@
 .DS_Store
 .next
-out
 node_modules
-keyname.pem
