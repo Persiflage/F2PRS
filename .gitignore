@@ -4,3 +4,4 @@
 out
 node_modules
 keyname.pem
+config.json
