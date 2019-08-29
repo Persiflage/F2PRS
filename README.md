@@ -1,5 +1,7 @@
 # F2PRS
 
+**Note:** The [v3](https://github.com/pacocoursey/f2prs/tree/v3.0.0-alpha) branch is under heavy development - the stable release branch is [master](https://github.com/pacocoursey/f2prs/tree/master).
+
 F2PRS is a hiscores for pure free-to-play RuneScape players.
 
 ## Usage
