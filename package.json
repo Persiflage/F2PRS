@@ -1,9 +1,81 @@
 {
+  "name": "f2prs",
+  "version": "v3.0.0-alpha",
   "license": "MIT",
   "scripts": {
-    "dev:api": "cd api && yarn dev",
-    "dev:front": "cd www && yarn dev",
-    "start:api": "cd api && yarn start",
-    "start:front": "cd www && yarn start"
-  }
+    "dev": "next",
+    "lint": "prettier --write '**/*.js'"
+  },
+  "dependencies": {
+    "isomorphic-unfetch": "^3.0.0",
+    "mysql": "^2.17.1",
+    "next": "^9.0.5",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.3",
+    "eslint": "^5.12.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-react": "^7.12.3",
+    "eslint-plugin-react-hooks": "^2.0.1",
+    "prettier": "^1.18.2"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "parserOptions": {
+      "ecmaVersion": 8,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true,
+        "impliedStrict": true,
+        "experimentalObjectRestSpread": true
+      },
+      "allowImportExportEverywhere": true
+    },
+    "plugins": [
+      "react",
+      "import"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended"
+    ],
+    "env": {
+      "es6": true,
+      "browser": true,
+      "node": true
+    },
+    "rules": {
+      "func-names": [
+        "error",
+        "as-needed"
+      ],
+      "no-shadow": "error",
+      "import/no-mutable-exports": "error",
+      "import/no-anonymous-default-export": [
+        "error",
+        {
+          "allowArray": true,
+          "allowArrowFunction": true,
+          "allowLiteral": true,
+          "allowObject": true
+        }
+      ],
+      "no-extra-semi": 0,
+      "react/prop-types": 0,
+      "react/react-in-jsx-scope": 0,
+      "react/no-unescaped-entities": 0,
+      "react/jsx-no-target-blank": 0,
+      "react/no-string-refs": 0
+    }
+  },
+  "eslintIgnore": [
+    "**/node_modules/**/*.js",
+    "**/.next/**/*.js"
+  ]
 }

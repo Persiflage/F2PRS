@@ -1,7 +1,7 @@
 .DS_Store
 .vscode
 .next
-out
-node_modules
+node_modules/
 keyname.pem
 config.json
+assets/

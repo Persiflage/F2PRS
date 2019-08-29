@@ -1,8 +1,0 @@
-{
-  "name": "f2prs",
-  "version": 2,
-  "builds": [
-    { "src": "", "use": "@now/next" },
-    { "src": "", "use": "@now/node" }
-  ]
-}
