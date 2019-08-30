@@ -1,11 +1,6 @@
 import mysql from 'mysql'
 
-import {
-  getRawStats,
-  parseRawStats,
-  calculateF2PTotal,
-  calculateSkillerTotal
-} from '../../lib/rs-api'
+import { getRawStats, parseRawStats } from '../../lib/rs-api'
 const config = require('../../config')
 
 function queryDB() {
@@ -30,13 +25,12 @@ function queryDB() {
 async function main() {
   const raw = await getRawStats('persiflage')
   const skills = parseRawStats(raw)
-  console.log(skills)
+  // console.log(skills)
 
-  console.log(`F2P Total: ${calculateF2PTotal(skills)}`)
-  console.log(`Skiller Total: ${calculateSkillerTotal(skills)}`)
+  return skills
 }
 
-export default (req, res) => {
+export default async (req, res) => {
   res.json({
     success: true
   })

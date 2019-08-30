@@ -15,25 +15,16 @@ $ git clone https://github.com/pacocoursey/f2prs.git
 $ cd f2prs
 ```
 
-Then, install packages for the API and begin the development server:
+Then, install packages and start the development server:
 
 ```bash
-$ cd api
-$ yarn install  # or npm install
-$ yarn dev      # or npm run dev
-```
-
-And install packages for the front-end and begin the development server:
-
-```bash
-$ cd www
 $ yarn install  # or npm install
 $ yarn dev      # or npm run dev
 ```
 
 ## Implementation
 
-The front-end is written in React, using the Next.js framework, and styled with styled-components. The back-end API is written in Node using the Express framework. The back-end uses a MySQL database.
+The front-end is written in [React](https://reactjs.org/), using the [Next.js](https://nextjs.org) framework, and styled with [styled-jsx](https://github.com/zeit/styled-jsx). The back-end API is written using [Next.js API routes](https://nextjs.org/blog/next-9#api-routes). The back-end uses a MySQL database.
 
 ## Database Design
 
