@@ -12,7 +12,7 @@
 		<h1 style="display: inline-block">Welcome.</h1><p style="width: 480px; margin: 0 auto; line-height: 24px;"> F2PRS was created so that XP focused F2P players can find accurate hiscores. The minimalistic page layout is designed so that you can access desired information quickly and easily.</p>
 
 		<p style="width: 480px; margin: 30px auto; line-height: 24px;">
-			<span class="gain">Jan 13</span>/ <a class="gain" href="tools/rates/">Combat, Mining, and Smithing EHP rates</a> have been updated. Thanks to <a class="gain" href="track.php?player=Lora">Lora</a> and <a class="gain" href="track.php?player=Deerk">Deerk</a> for testing.
+			<span class="gain">May 3</span>/ Archaeology is now supported.
 			<br>
 		</p>
 

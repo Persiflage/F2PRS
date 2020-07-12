@@ -10,7 +10,7 @@
 	}
 
 	function is_p2p($stats) {
-		$MAX_F2P_TOTAL = 1750;
+		$MAX_F2P_TOTAL = 1770;
 
 		if(
 		$stats['herblore']['level'] != 1 ||
@@ -23,6 +23,8 @@
 		$stats['summoning']['level'] != 1 ||
 		$stats['divination']['level'] != 1 ||
 		$stats['invention']['level'] != 0 ||
+		// Arch goes up to level 20, so it's recorded on the hiscores
+		$stats['archaeology']['level'] > 20 ||
 		$stats['total']['level'] > $MAX_F2P_TOTAL) {
 			return true;
 		} else
