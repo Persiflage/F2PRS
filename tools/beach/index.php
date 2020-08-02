@@ -82,6 +82,9 @@
                         case "Coconut Shy":
                           $activity = '<p class="has-text-success">Coconut Shy</p>';
                           break;
+                        case "Dungeoneering Hole":
+                          $activity = '<p class="has-text-danger">Dungeoneering Hole</p>';
+                          break;
                         default:
                           $activity = '<p>'.$activity.'</p>';
                           break;
@@ -117,7 +120,7 @@
                       echo '<td>'.$world.'</td>';
                       echo '<td>'.$activity.'</td>';
                       echo '<td>'.$status.'</td>';
-                      echo '<td><div class="select is-light is-small"><select onchange="update(this);"><option>Select</option><option>Members</option><option>Rock Pools</option><option>Barbeque</option><option>Weight Training</option><option>Coconut Shy</option></select></div></td>';
+                      echo '<td><div class="select is-light is-small"><select onchange="update(this);"><option>Select</option><option>Members</option><option>Rock Pools</option><option>Barbeque</option><option>Weight Training</option><option>Coconut Shy</option><option>Dungeoneering Hole</option></select></div></td>';
                       echo '</tr>';
                     }
 
