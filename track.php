@@ -59,9 +59,9 @@
 			require_once 'assets/includes/php/ehp.php';
 			require_once 'assets/includes/php/db.php';
 
-			$f2p_skills = array("total", "attack", "defence", "strength", "constitution", "ranged", "prayer", "magic", "cooking", "woodcutting", "fletching", "fishing", "firemaking", "crafting", "smithing", "mining", "runecrafting", "dungeoneering");
+			$f2p_skills = array("total", "attack", "defence", "strength", "constitution", "ranged", "prayer", "magic", "cooking", "woodcutting", "fletching", "fishing", "firemaking", "crafting", "smithing", "mining", "runecrafting", "dungeoneering", "runescore");
 
-			$f2p_skills_with_ehp = array("total", "attack", "defence", "strength", "constitution", "ranged", "prayer", "magic", "cooking", "woodcutting", "fletching", "fishing", "firemaking", "crafting", "smithing", "mining", "runecrafting", "dungeoneering", "ehp", "sk_ehp");
+			$f2p_skills_with_ehp = array("total", "attack", "defence", "strength", "constitution", "ranged", "prayer", "magic", "cooking", "woodcutting", "fletching", "fishing", "firemaking", "crafting", "smithing", "mining", "runecrafting", "dungeoneering", "runescore", "ehp", "sk_ehp");
 
 			/* Gets stats and virtual levels */
 			$stats = get_stats($player);
@@ -119,13 +119,13 @@
 				echo "<td class='virt'>".$stats[$skill]['virtual']."</td>";
 			else if($skill == "total")
 				echo "<td><div class='tooltip'>".$stats['f2p_total']."<span class='tooltiptext'>".$stats['total']['level']."</span></div></td>";
-			else if($skill == "ehp" || $skill == "sk_ehp")
+			else if($skill == "ehp" || $skill == "sk_ehp" || $skill == "runescore")
 				echo "<td></td>";
 			else
 				echo "<td>".$stats[$skill]["level"]."</td>";
 
 			/* Skill xp */
-			if($skill == "ehp" || $skill == "sk_ehp")
+			if($skill == "ehp" || $skill == "sk_ehp" || $skill == "runescore")
 				echo "<td>".number_format($stats[$skill]['xp'], 2)."</td>";
 			else
 				echo "<td>".number_format($stats[$skill]['xp'])."</td>";
@@ -189,11 +189,10 @@
 		$data = $week->fetch_array(MYSQLI_ASSOC);
 
 		foreach($f2p_skills as $skill) {
-			if($skill == "ehp" || $skill == "sk_ehp")
+			if($skill == "ehp" || $skill == "sk_ehp" || $skill == "runescore")
 				$skill_xp = $skill;
 			else
 				$skill_xp = $skill . "_xp";
-
 			$gain = $stats[$skill]["xp"] - $data[$skill_xp];
 			$stats[$skill]["week"] = $gain;
 
@@ -206,7 +205,7 @@
 		$data = $month->fetch_array(MYSQLI_ASSOC);
 
 		foreach($f2p_skills as $skill) {
-			if($skill == "ehp" || $skill == "sk_ehp")
+			if($skill == "ehp" || $skill == "sk_ehp" || $skill == "runescore")
 				$skill_xp = $skill;
 			else
 				$skill_xp = $skill . "_xp";
@@ -267,6 +266,4 @@
 		sk_total = $stats[sk_total],
 		mode = $stats[mode] WHERE rsn = '$player'");
 	}
-
-
 ?>
