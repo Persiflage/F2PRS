@@ -19,39 +19,7 @@
 
 	function parse_raw_stats($player, $raw) {
 
-		$order = array("total", "attack", "defence", "strength", "constitution", "ranged", "prayer", "magic", "cooking", "woodcutting", "fletching", "fishing", "firemaking", "crafting", "smithing", "mining", "herblore", "agility", "thieving", "slayer", "farming", "runecrafting", "hunter", "construction", "summoning", "dungeoneering", "divination", "invention", "archaeology");
-		$stats = array();
-
-		/* Player wasn't found, return null */
-		if($raw == null)
-			return null;
-
-		$raw = explode("\n", str_replace("-1", "0", $raw));
-
-		$i = 0;
-		foreach($order as $key) {
-			$split = explode(",", $raw[$i]);
-
-			$stats[$key]["global"] = $split[0];
-			$stats[$key]["level"] = $split[1];
-			$stats[$key]["xp"] = $split[2];
-
-			/* Setup a virtual field IF xp > level 100 */
-			if($split[2] > 14391160 && $key != "total")
-				$stats[$key]["virtual"] = calc_virtual($split[2]);
-
-			$i++;
-		}
-
-		if($stats["constitution"]["level"] == 1)
-			$stats["constitution"]["level"] = 10;
-
-		return $stats;
-	}
-
-	function get_stats($player) {
-
-		$order = array("total", "attack", "defence", "strength", "constitution", "ranged", "prayer", "magic", "cooking", "woodcutting", "fletching", "fishing", "firemaking", "crafting", "smithing", "mining", "herblore", "agility", "thieving", "slayer", "farming", "runecrafting", "hunter", "construction", "summoning", "dungeoneering", "divination", "invention", "archaeology");
+		$order = array("total", "attack", "defence", "strength", "constitution", "ranged", "prayer", "magic", "cooking", "woodcutting", "fletching", "fishing", "firemaking", "crafting", "smithing", "mining", "herblore", "agility", "thieving", "slayer", "farming", "runecrafting", "hunter", "construction", "summoning", "dungeoneering", "divination", "invention", "archaeology", "runescore");
 		$stats = array();
 
 		$raw = curl($player);
@@ -61,6 +29,8 @@
 			return null;
 
 		$raw = explode("\n", str_replace("-1", "0", $raw));
+		$runescore = str_replace(",",", ,",$raw[53]);
+		$bye = array_splice($raw, 29, 24, array($runescore));
 
 		$i = 0;
 		foreach($order as $key) {
@@ -79,7 +49,42 @@
 
 		if($stats["constitution"]["level"] == 1)
 			$stats["constitution"]["level"] = 10;
+		return $stats;
+	}
 
+	function get_stats($player) {
+
+		$order = array("total", "attack", "defence", "strength", "constitution", "ranged", "prayer", "magic", "cooking", "woodcutting", "fletching", "fishing", "firemaking", "crafting", "smithing", "mining", "herblore", "agility", "thieving", "slayer", "farming", "runecrafting", "hunter", "construction", "summoning", "dungeoneering", "divination", "invention", "archaeology", "runescore");
+		$stats = array();
+
+		$raw = curl($player);
+
+		/* Player wasn't found, return null */
+		if($raw == null)
+			return null;
+
+		$raw = explode("\n", str_replace("-1", "0", $raw));
+		$duplicate = explode(",", $raw[53]);
+		$runescore = str_replace(",",", $duplicate[1],", $raw[53]);
+		array_splice($raw, 29, 24, array($runescore));
+
+		$i = 0;
+		foreach($order as $key) {
+			$split = explode(",", $raw[$i]);
+
+			$stats[$key]["global"] = $split[0];
+			$stats[$key]["level"] = $split[1];
+			$stats[$key]["xp"] = $split[2];
+
+			/* Setup a virtual field IF xp > level 100 */
+			if($split[2] > 14391160 && $key != "total")
+				$stats[$key]["virtual"] = calc_virtual($split[2]);
+
+			$i++;
+		}
+
+		if($stats["constitution"]["level"] == 1)
+			$stats["constitution"]["level"] = 10;
 		return $stats;
 	}
 
