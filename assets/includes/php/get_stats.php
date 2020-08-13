@@ -29,8 +29,9 @@
 			return null;
 
 		$raw = explode("\n", str_replace("-1", "0", $raw));
-		$runescore = str_replace(",",", ,",$raw[53]);
-		$bye = array_splice($raw, 29, 24, array($runescore));
+		$duplicate = explode(",", $raw[53]);
+		$runescore = str_replace(",",", $duplicate[1],", $raw[53]);
+		array_splice($raw, 29, 24, array($runescore));
 
 		$i = 0;
 		foreach($order as $key) {
