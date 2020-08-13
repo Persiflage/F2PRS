@@ -125,7 +125,7 @@
 				echo "<td>".$stats[$skill]["level"]."</td>";
 
 			/* Skill xp */
-			if($skill == "ehp" || $skill == "sk_ehp" || $skill == "runescore")
+			if($skill == "ehp" || $skill == "sk_ehp")
 				echo "<td>".number_format($stats[$skill]['xp'], 2)."</td>";
 			else
 				echo "<td>".number_format($stats[$skill]['xp'])."</td>";
@@ -266,4 +266,5 @@
 		sk_total = $stats[sk_total],
 		mode = $stats[mode] WHERE rsn = '$player'");
 	}
+
 ?>
