@@ -125,7 +125,7 @@
 	function reset_week($player, $stats, $link, $f2p_skills_with_ehp) {
 		/* update week */
 		foreach($f2p_skills_with_ehp as $skill) {
-			if($skill == "ehp" || $skill == "sk_ehp")
+			if($skill == "ehp" || $skill == "sk_ehp" || $skill == "runescore")
 				$skill_xp = $skill;
 			else
 				$skill_xp = $skill . "_xp";
@@ -155,6 +155,7 @@
 			mining_xp=0,
 			runecrafting_xp=0,
 			dungeoneering_xp=0,
+			runescore=0,
 			ehp=0.0, sk_ehp=0.0 WHERE rsn='$player'"
 		);
 	}

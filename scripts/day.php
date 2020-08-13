@@ -128,7 +128,7 @@
 		$data = $week->fetch_array(MYSQLI_ASSOC);
 
 		foreach($f2p_skills as $skill) {
-			if($skill == "ehp" || $skill == "sk_ehp")
+			if($skill == "ehp" || $skill == "sk_ehp" || $skill == "runescore")
 				$skill_xp = $skill;
 			else
 				$skill_xp = $skill . "_xp";
@@ -145,7 +145,7 @@
 		$data = $month->fetch_array(MYSQLI_ASSOC);
 
 		foreach($f2p_skills as $skill) {
-			if($skill == "ehp" || $skill == "sk_ehp")
+			if($skill == "ehp" || $skill == "sk_ehp" || $skill == "runescore")
 				$skill_xp = $skill;
 			else
 				$skill_xp = $skill . "_xp";
