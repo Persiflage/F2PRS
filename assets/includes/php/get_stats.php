@@ -19,7 +19,7 @@
 
 	function parse_raw_stats($player, $raw) {
 
-		$order = array("total", "attack", "defence", "strength", "constitution", "ranged", "prayer", "magic", "cooking", "woodcutting", "fletching", "fishing", "firemaking", "crafting", "smithing", "mining", "herblore", "agility", "thieving", "slayer", "farming", "runecrafting", "hunter", "construction", "summoning", "dungeoneering", "divination", "invention", "archaeology");
+		$order = array("total", "attack", "defence", "strength", "constitution", "ranged", "prayer", "magic", "cooking", "woodcutting", "fletching", "fishing", "firemaking", "crafting", "smithing", "mining", "herblore", "agility", "thieving", "slayer", "farming", "runecrafting", "hunter", "construction", "summoning", "dungeoneering", "divination", "invention", "archaeology", "runescore");
 		$stats = array();
 
 		/* Player wasn't found, return null */
@@ -27,6 +27,9 @@
 			return null;
 
 		$raw = explode("\n", str_replace("-1", "0", $raw));
+		$duplicate = explode(",", $raw[53]);
+		$runescore = str_replace(",",", $duplicate[1],", $raw[53]);
+		array_splice($raw, 29, 24, array($runescore));
 
 		$i = 0;
 		foreach($order as $key) {
@@ -45,13 +48,12 @@
 
 		if($stats["constitution"]["level"] == 1)
 			$stats["constitution"]["level"] = 10;
-
 		return $stats;
 	}
 
 	function get_stats($player) {
 
-		$order = array("total", "attack", "defence", "strength", "constitution", "ranged", "prayer", "magic", "cooking", "woodcutting", "fletching", "fishing", "firemaking", "crafting", "smithing", "mining", "herblore", "agility", "thieving", "slayer", "farming", "runecrafting", "hunter", "construction", "summoning", "dungeoneering", "divination", "invention", "archaeology");
+		$order = array("total", "attack", "defence", "strength", "constitution", "ranged", "prayer", "magic", "cooking", "woodcutting", "fletching", "fishing", "firemaking", "crafting", "smithing", "mining", "herblore", "agility", "thieving", "slayer", "farming", "runecrafting", "hunter", "construction", "summoning", "dungeoneering", "divination", "invention", "archaeology", "runescore");
 		$stats = array();
 
 		$raw = curl($player);
@@ -61,6 +63,9 @@
 			return null;
 
 		$raw = explode("\n", str_replace("-1", "0", $raw));
+		$duplicate = explode(",", $raw[53]);
+		$runescore = str_replace(",",", $duplicate[1],", $raw[53]);
+		array_splice($raw, 29, 24, array($runescore));
 
 		$i = 0;
 		foreach($order as $key) {
@@ -79,7 +84,6 @@
 
 		if($stats["constitution"]["level"] == 1)
 			$stats["constitution"]["level"] = 10;
-
 		return $stats;
 	}
 

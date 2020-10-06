@@ -11,7 +11,7 @@
 
 			/* Global variables */
 			$errors = array();
-			$skills_f2p = array("total", "attack", "defence", "strength", "constitution", "ranged", "prayer", "magic", "cooking", "woodcutting", "fletching", "fishing", "firemaking", "crafting", "smithing", "mining", "runecrafting", "dungeoneering", "ehp", "sk_ehp", "combined_ehp", "total_xp");
+			$skills_f2p = array("total", "attack", "defence", "strength", "constitution", "ranged", "prayer", "magic", "cooking", "woodcutting", "fletching", "fishing", "firemaking", "crafting", "smithing", "mining", "runecrafting", "dungeoneering", "runescore", "ehp", "sk_ehp", "combined_ehp", "total_xp");
 
 			/* Parse URL/POST/GET variables */
 			$args = array(
@@ -54,6 +54,11 @@
 				case "combined_ehp":
 					$skill_title = "Combined EHP";
 					$unit_title = "EHP";
+					$column_flag = true;
+					break;
+				case "runescore":
+					$skill_title = "Achievements";
+					$unit_title = "Score";
 					$column_flag = true;
 					break;
 				case "total_xp":

@@ -82,9 +82,9 @@
 
 		global $link, $rates, $sk_rates;
 
-		$f2p_skills = array("total", "attack", "defence", "strength", "constitution", "ranged", "prayer", "magic", "cooking", "woodcutting", "fletching", "fishing", "firemaking", "crafting", "smithing", "mining", "runecrafting", "dungeoneering");
+		$f2p_skills = array("total", "attack", "defence", "strength", "constitution", "ranged", "prayer", "magic", "cooking", "woodcutting", "fletching", "fishing", "firemaking", "crafting", "smithing", "mining", "runecrafting", "dungeoneering", "runescore");
 
-		$f2p_skills_with_ehp = array("total", "attack", "defence", "strength", "constitution", "ranged", "prayer", "magic", "cooking", "woodcutting", "fletching", "fishing", "firemaking", "crafting", "smithing", "mining", "runecrafting", "dungeoneering", "ehp", "sk_ehp");
+		$f2p_skills_with_ehp = array("total", "attack", "defence", "strength", "constitution", "ranged", "prayer", "magic", "cooking", "woodcutting", "fletching", "fishing", "firemaking", "crafting", "smithing", "mining", "runecrafting", "dungeoneering", "runescore", "ehp", "sk_ehp");
 
 		/* Gets stats and virtual levels */
 		$stats = parse_raw_stats($player, $raw);
@@ -125,7 +125,7 @@
 	function reset_month($player, $stats, $link, $f2p_skills_with_ehp) {
 		/* update month */
 		foreach($f2p_skills_with_ehp as $skill) {
-			if($skill == "ehp" || $skill == "sk_ehp")
+			if($skill == "ehp" || $skill == "sk_ehp" || $skill == "runescore")
 				$skill_xp = $skill;
 			else
 				$skill_xp = $skill . "_xp";
@@ -155,6 +155,7 @@
 			mining_xp=0,
 			runecrafting_xp=0,
 			dungeoneering_xp=0,
+			runescore=0,
 			ehp=0, sk_ehp=0 WHERE rsn='$player'"
 		);
 	}
@@ -166,7 +167,7 @@
 		$data = $week->fetch_array(MYSQLI_ASSOC);
 
 		foreach($f2p_skills as $skill) {
-			if($skill == "ehp" || $skill == "sk_ehp")
+			if($skill == "ehp" || $skill == "sk_ehp" || $skill == "runescore")
 				$skill_xp = $skill;
 			else
 				$skill_xp = $skill . "_xp";
@@ -183,7 +184,7 @@
 		$data = $month->fetch_array(MYSQLI_ASSOC);
 
 		foreach($f2p_skills as $skill) {
-			if($skill == "ehp" || $skill == "sk_ehp")
+			if($skill == "ehp" || $skill == "sk_ehp" || $skill == "runescore")
 				$skill_xp = $skill;
 			else
 				$skill_xp = $skill . "_xp";
