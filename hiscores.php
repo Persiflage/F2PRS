@@ -110,6 +110,8 @@
 			/* Get ranks */
 			$ranks = get_skill_ranks($skill, $start, $mode);
 
+			$idx = 1;
+
 			foreach($ranks as $rank_tmp) {
 
 				/* If &player, highlight the row */
@@ -119,7 +121,7 @@
 					echo '<tr>';
 
 				/* Print rank # */
-				$lol = (($page-1) * 25) + $rank_tmp['rank'];
+				$lol = (($page-1) * 25) + $idx;
 				echo '<td>'.number_format($lol);
 
 				/* Print rsn */
@@ -136,6 +138,8 @@
 					echo "<td>".number_format($rank_tmp['xp'])."</td>";
 
 				echo "</tr>";
+
+				$idx++;
 			}
 
 			echo "</table>";
