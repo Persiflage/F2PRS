@@ -7,18 +7,17 @@
  */
 
 function database_connect() {
-
 	/* Connect to database */
 	if (!isset($_SERVER['HTTP_HOST'])) {
 		// REPLACEME
-		$link = mysqli_connect('127.0.0.1', 'username', 'password', 'database');
+		$link = mysqli_connect('127.0.0.1', 'username', 'password', 'f2prs');
 	} else {
-		if ($_SERVER['HTTP_HOST'] == "localhost") {
+		if (startsWith($_SERVER['HTTP_HOST'], "localhost")) {
 			// REPLACEME
-			$link = mysqli_connect('127.0.0.1', 'username', 'password', "database");
+			$link = mysqli_connect('127.0.0.1', 'username', 'password', "f2prs");
 		} else {
 			// REPLACEME
-			$link = mysqli_connect('127.0.0.1', 'username', 'password', 'database');
+			$link = mysqli_connect('127.0.0.1', 'username', 'password', 'f2prs');
 		}
 	}
 
@@ -43,35 +42,31 @@ function get_player_ranks($player, $stats, $link, $f2p_skills) {
 
 	foreach($f2p_skills as $skill) {
         $skill_xp = $skill . "_xp";
-        $skill_global = "global_" . $skill;
+				$skill_global = "global_" . $skill;
 
-        $link->query("SET @rank:=0");
-        $sql = "SELECT rank FROM (SELECT @rank:=@rank+1 AS rank, rsn FROM hs ORDER BY $skill_xp DESC, $skill_global ASC) AS stats WHERE stats.rsn = '$player'";
+				$sql = "WITH tmp AS (SELECT *, RANK() OVER (ORDER BY $skill_xp DESC, $skill_global ASC) ranking FROM hs) SELECT * FROM tmp WHERE rsn = '$player'";
         $data = $link->query($sql);
         $info = $data->fetch_array(MYSQLI_ASSOC);
 
-        $stats[$skill]["rank"] = $info["rank"];
+        $stats[$skill]["rank"] = $info["ranking"];
     }
 
 	/* Total Level Rank */
-	$link->query("SET @rank:=0");
-	$sql = "SELECT rank FROM (SELECT @rank:=@rank+1 AS rank, rsn FROM hs ORDER BY f2p_total DESC, total_xp DESC) AS stats WHERE stats.rsn = '$player'";
+	$sql = "WITH tmp AS (SELECT *, RANK() OVER (ORDER BY f2p_total DESC, total_xp DESC) ranking FROM hs) SELECT * FROM tmp WHERE rsn = '$player'";
 	$data = $link->query($sql);
 	$info = $data->fetch_array(MYSQLI_ASSOC);
-	$stats["total"]["level_rank"] = $info["rank"];
+	$stats["total"]["level_rank"] = $info["ranking"];
 
 	/* EHP and SK_EHP ranks */
-	$link->query("SET @rank:=0");
-	$sql = "SELECT rank FROM (SELECT @rank:=@rank+1 AS rank, rsn FROM hs ORDER BY ehp DESC) AS stats WHERE stats.rsn = '$player'";
+	$sql = "WITH tmp AS (SELECT *, RANK() OVER (ORDER BY ehp DESC) ranking FROM hs) SELECT * FROM tmp WHERE rsn = '$player'";
 	$data = $link->query($sql);
 	$info = $data->fetch_array(MYSQLI_ASSOC);
-	$stats["ehp"]["rank"] = $info["rank"];
+	$stats["ehp"]["rank"] = $info["ranking"];
 
-	$link->query("SET @rank:=0");
-	$sql = "SELECT rank FROM (SELECT @rank:=@rank+1 AS rank, rsn, mode FROM hs WHERE mode = 2 ORDER BY sk_ehp DESC) AS stats WHERE stats.rsn = '$player'";
+	$sql = "WITH tmp AS (SELECT *, RANK() OVER (ORDER BY sk_ehp DESC) ranking FROM hs WHERE mode = 2) SELECT * FROM tmp WHERE rsn = '$player'";
 	$data = $link->query($sql);
 	$info = $data->fetch_array(MYSQLI_ASSOC);
-	$stats["sk_ehp"]["rank"] = $info["rank"];
+	$stats["sk_ehp"]["rank"] = $info["ranking"];
 
 	return $stats;
 }
@@ -94,9 +89,6 @@ function get_skill_ranks($skill, $start, $mode) {
 	$skill_xp = $skill."_xp";
 	$skill_global = "global_".$skill;
 
-	/* Setup local SQL variable and code */
-	$data = $link->query("SET @rank:=0");
-
 	/* Regular Mode should not exclude Skillers or Ironmen */
 	if($mode == 1)
 		$mode = "1 OR mode = 2 OR mode = 3 OR mode = 4";
@@ -104,7 +96,7 @@ function get_skill_ranks($skill, $start, $mode) {
 	switch($skill) {
 		case "ehp":
 		case "sk_ehp":
-			$sql = "SELECT rsn, $skill AS xp, @rank:=@rank+1 AS rank
+			$sql = "SELECT rsn, $skill AS xp
 			FROM hs WHERE mode = $mode ORDER BY $skill DESC
 			LIMIT $start, 25";
 			break;
@@ -112,17 +104,17 @@ function get_skill_ranks($skill, $start, $mode) {
 			//$SQL
 			break;
 		case "total_xp":
-			$sql = "SELECT rsn, $skill AS xp, @rank:=@rank+1 AS rank
+			$sql = "SELECT rsn, $skill AS xp
 			FROM hs WHERE mode = $mode ORDER BY $skill DESC
 			LIMIT $start, 25";
 			break;
 		case "total":
-			$sql = "SELECT rsn, f2p_total AS skill, $skill_xp AS xp, @rank:=@rank+1 AS rank
+			$sql = "SELECT rsn, f2p_total AS skill, $skill_xp AS xp
 			FROM hs WHERE mode = $mode ORDER BY f2p_total DESC, $skill_xp DESC
 			LIMIT $start, 25";
 			break;
 		default:
-			$sql = "SELECT rsn, $skill_xp AS xp, $skill AS skill, @rank:=@rank+1 AS rank
+			$sql = "SELECT rsn, $skill_xp AS xp, $skill AS skill
 			FROM hs WHERE mode = $mode ORDER BY $skill_xp DESC, $skill_global ASC
 			LIMIT $start, 25";
 			break;
@@ -165,6 +157,11 @@ function get_total_users($link) {
 	$tmp = $data->fetch_array(MYSQLI_ASSOC);
 
 	return $tmp['count'];
+}
+
+function startsWith( $haystack, $needle ) {
+	$length = strlen( $needle );
+	return substr( $haystack, 0, $length ) === $needle;
 }
 
 ?>
